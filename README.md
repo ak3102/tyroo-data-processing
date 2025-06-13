@@ -1,11 +1,18 @@
-# Tyroo Data Processing Script
+# Tyroo Backend Developer -
 
-This project processes a large CSV file, performs data cleaning, and stores the results in a SQL database.
+This project downloads, decompresses, processes a large CSV file, and stores cleaned data into a SQL database.
 
-## Setup
+---
 
-1. Ensure Python 3.8+ is installed.
-2. Install dependencies:
+## 🔧 Tech Stack
+- Python 3.8+
+- Pandas
+- SQLite3
+- Logging
 
+## Setup Instructions
+
+### 1. Clone the repository:
 ```bash
-pip install pandas requests
+git clone https://github.com/ak3102/tyroo-data-processing.git
+cd tyroo-data-processing
