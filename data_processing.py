@@ -6,10 +6,7 @@ import sqlite3
 import logging
 import os
 
-# Setup logging
 logging.basicConfig(filename='data_processing.log', level=logging.INFO)
-
-# Constants
 DOWNLOAD_URL = "https://tyroo-engineering-assesments.s3.us-west-2.amazonaws.com/Tyroo-dummy-data.csv.gz"
 CSV_GZ_FILE = "Tyroo-dummy-data.csv.gz"
 CSV_FILE = "Tyroo-dummy-data.csv"
@@ -48,8 +45,7 @@ def create_table(conn):
         campaign TEXT,
         impressions INTEGER,
         clicks INTEGER,
-        revenue REAL
-    );
+        revenue REAL );
     """)
     conn.commit()
 
@@ -58,7 +54,6 @@ def process_and_store_data():
     create_table(conn)
     try:
         for chunk in pd.read_csv(CSV_FILE, chunksize=CHUNK_SIZE):
-            # Clean & transform
             chunk = chunk.dropna()
             chunk.columns = [c.strip().lower().replace(" ", "_") for c in chunk.columns]
             chunk.to_sql("data", conn, if_exists="append", index=False)
